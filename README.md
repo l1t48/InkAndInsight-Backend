@@ -1,3 +1,40 @@
+## Introduction
+This is the backend API for a book and quotes management application built with .NET 9 and PostgreSQL. It provides secured CRUD operations for books and quotes, with JWT-based authentication and per-user data isolation.
+
+## Project Structure
+.
+├── Config
+│   ├── CorsConfig.cs          # Configures CORS policies
+│   ├── DatabaseConfig.cs      # Sets up database connection
+│   ├── JwtConfig.cs           # Configures JWT authentication
+│   └── SwaggerConfig.cs       # Configures Swagger/OpenAPI documentation
+├── Controllers
+│   ├── AuthController.cs      # Handles user registration and login
+│   ├── BooksController.cs     # CRUD operations for books (secured)
+│   └── QuotesController.cs    # CRUD operations for quotes (secured)
+├── DTOs                       # Data Transfer Objects for API requests/responses
+│   ├── BookCreateDto.cs
+│   ├── BookUpdateDto.cs
+│   ├── QuoteCreateDto.cs
+│   ├── QuoteUpdateDto.cs
+│   ├── UserLoginDto.cs
+│   └── UserRegisterDto.cs     
+├── Data
+│   ├── AppDbContext.cs        # EF Core database context
+│   └── AppDbContextFactory.cs # Factory for creating DbContext instances
+├── Helpers
+│   └── PasswordHelper.cs      # Utility for password hashing and verification
+├── Models                     # Entity models for the database
+│   ├── Book.cs
+│   ├── Quote.cs
+│   └── User.cs                
+├── Services
+│   └── UserService.cs         # Handles user-related logic (registration, login)
+├── MyBackend.csproj           # Project file for .NET build
+├── Program.cs                 # Application entry point
+├── README.md                  # Project documentation
+├── appsettings.json           # General configuration file
+└── appsettings.Development.json # Development-specific configuration
 
 ## Environment Variables
 
@@ -11,6 +48,24 @@ The backend requires several environment variables for configuration. Replace th
 | `ConnectionStrings__DefaultConnection`   | Connection string for the PostgreSQL database | `YOUR_DATABASE_URL_HERE`                           |
 | `Cors__AllowedOrigins`                   | Allowed frontend origins for CORS             | `http://localhost:4200,http://localhost:5069`      |
 -------------------------------------------------------------------------------------------------------------------------------------------------
+
+## API Endpoints Reference
+
+| Method | URL                                                                                |
+| ------ | ---------------------------------------------------------------------------------- |
+| POST   | [http://localhost:5069/api/auth/register](http://localhost:5069/api/auth/register) |
+| POST   | [http://localhost:5069/api/auth/login](http://localhost:5069/api/auth/login)       |
+| GET    | [http://localhost:5069/api/books](http://localhost:5069/api/books)                 |
+| GET    | [http://localhost:5069/api/books/{id}](http://localhost:5069/api/books/{id})       |
+| POST   | [http://localhost:5069/api/books](http://localhost:5069/api/books)                 |
+| PUT    | [http://localhost:5069/api/books/{id}](http://localhost:5069/api/books/{id})       |
+| DELETE | [http://localhost:5069/api/books/{id}](http://localhost:5069/api/books/{id})       |
+| GET    | [http://localhost:5069/api/quotes](http://localhost:5069/api/quotes)               |
+| GET    | [http://localhost:5069/api/quotes/{id}](http://localhost:5069/api/quotes/{id})     |
+| POST   | [http://localhost:5069/api/quotes](http://localhost:5069/api/quotes)               |
+| PUT    | [http://localhost:5069/api/quotes/{id}](http://localhost:5069/api/quotes/{id})     |
+| DELETE | [http://localhost:5069/api/quotes/{id}](http://localhost:5069/api/quotes/{id})     |
+
 
 ## Backend Test Verification Checklist
 
