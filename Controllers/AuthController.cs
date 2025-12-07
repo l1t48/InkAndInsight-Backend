@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Mvc; // Provides attributes and base classes for buil
 using MyBackend.Services;
 using MyBackend.Dtos;
 using System.Security.Claims;
-
+using Microsoft.EntityFrameworkCore;
+using MyBackend.Helpers;
+using MyBackend.Data;
 
 namespace MyBackend.Controllers
 {
@@ -17,20 +19,49 @@ namespace MyBackend.Controllers
     public class AuthController : ControllerBase
     {
         private readonly UserService _userService;
+        private readonly AppDbContext _context;
 
-        public AuthController(UserService userService)
+        public AuthController(UserService userService, AppDbContext context)
         {
             _userService = userService;
+            _context = context;
         }
 
         // POST: api/register
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterDto dto)
         {
-            var result = await _userService.RegisterAsync(dto.Username, dto.Email, dto.Password);
-            if (!result) return BadRequest(new { message = "Email already in use." });
+            // 1) create user via service
+            var created = await _userService.RegisterAsync(dto.Username, dto.Email, dto.Password);
+            if (!created) return BadRequest(new { message = "Email already in use." });
+
+            // 2) find created user (defensive)
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null)
+            {
+                return StatusCode(500, new { message = "User created but not found for seeding." });
+            }
+
+            // 3) seed default quotes only if user has none
+            var hasQuotes = await _context.Quotes.AnyAsync(q => q.OwnerId == user.Id);
+            if (!hasQuotes)
+            {
+                var seeds = DefaultQuotes.GetDefaultQuotesForUser(user.Id);
+                await _context.Quotes.AddRangeAsync(seeds);
+                await _context.SaveChangesAsync();
+            }
+
             return Ok(new { message = "User registered!" });
         }
+
+        // // POST: api/register
+        // [HttpPost("register")]
+        // public async Task<IActionResult> Register(UserRegisterDto dto)
+        // {
+        //     var result = await _userService.RegisterAsync(dto.Username, dto.Email, dto.Password);
+        //     if (!result) return BadRequest(new { message = "Email already in use." });
+        //     return Ok(new { message = "User registered!" });
+        // }
 
         // POST: api/login
         [HttpPost("login")]
@@ -48,7 +79,7 @@ namespace MyBackend.Controllers
                 Expires = DateTime.UtcNow.AddHours(3)
             });
 
-            return Ok(new { message = "Logged in successfully"});
+            return Ok(new { message = "Logged in successfully" });
             // return Ok(new { message = "Logged in successfully" });
         }
 

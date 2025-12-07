@@ -199,3 +199,5 @@ E:\Projects\Praktik-Test\test-backend\obj\Debug\net9.0\MyBackend.genruntimeconfi
 E:\Projects\Praktik-Test\test-backend\obj\Debug\net9.0\ref\MyBackend.dll
 E:\Projects\Praktik-Test\test-backend\bin\Debug\net9.0\DotNetEnv.dll
 E:\Projects\Praktik-Test\test-backend\bin\Debug\net9.0\Sprache.dll
+E:\Projects\Praktik-Test\Test-backend\bin\Debug\net9.0\Newtonsoft.Json.dll
+E:\Projects\Praktik-Test\Test-backend\bin\Debug\net9.0\System.Net.WebSockets.WebSocketProtocol.dll

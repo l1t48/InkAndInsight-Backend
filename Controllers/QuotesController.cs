@@ -5,7 +5,8 @@ using MyBackend.Models;
 using MyBackend.Dtos;
 using System.Security.Claims;
 using MyBackend.Data;
-
+using Microsoft.AspNetCore.SignalR;
+using MyBackend.Hubs;
 namespace MyBackend.Controllers
 {
     [Authorize]
@@ -14,10 +15,12 @@ namespace MyBackend.Controllers
     public class QuotesController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IHubContext<NotificationsHub> _hub;
 
-        public QuotesController(AppDbContext context)
+        public QuotesController(AppDbContext context, IHubContext<NotificationsHub> hub)
         {
             _context = context;
+            _hub = hub;
         }
 
         // GET: api/quotes
@@ -68,6 +71,15 @@ namespace MyBackend.Controllers
             _context.Quotes.Add(quote);
             await _context.SaveChangesAsync();
 
+            // notify only this user (all their connections)
+            await _hub.Clients.User(userId.Value.ToString()).SendAsync("QuoteCreated", new
+            {
+                Id = quote.Id,
+                Text = quote.Text,
+                Author = quote.Author,
+                CreatedAt = quote.CreatedAt
+            });
+
             return CreatedAtAction(nameof(GetById), new { id = quote.Id }, quote);
         }
 
@@ -88,6 +100,13 @@ namespace MyBackend.Controllers
             _context.Quotes.Update(quote);
             await _context.SaveChangesAsync();
 
+            await _hub.Clients.User(userId.Value.ToString()).SendAsync("QuoteUpdated", new
+            {
+                Id = quote.Id,
+                Text = quote.Text,
+                Author = quote.Author
+            });
+
             return Ok(quote);
         }
 
@@ -103,7 +122,10 @@ namespace MyBackend.Controllers
             _context.Quotes.Remove(quote);
             await _context.SaveChangesAsync();
 
-            return Ok("Quotes has been deleted");
+            await _hub.Clients.User(userId.Value.ToString()).SendAsync("QuoteDeleted", new { Id = id });
+
+
+            return Ok(new { message = "Quote has been deleted" });
         }
 
         private int? GetCurrentUserId()

@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using MyBackend.Config;
 using MyBackend.Services;
+using MyBackend.Hubs;
 using MyBackend.Data;
+using MyBackend.Helpers;
+using Microsoft.AspNetCore.SignalR;
 
 DotNetEnv.Env.Load(); 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +27,13 @@ builder.Services.AddCorsPolicy(allowedOrigins);
 var jwtKey = Environment.GetEnvironmentVariable("Jwt__Key") ?? throw new Exception("JWT key not set in environment");
 var jwtIssuer = Environment.GetEnvironmentVariable("Jwt__Issuer") ?? "myapp-dev";
 builder.Services.AddJwtAuthentication(jwtKey, jwtIssuer);
+
+
+// ----------------------------
+// SignalR
+// ----------------------------
+builder.Services.AddSignalR();
+builder.Services.AddSingleton<IUserIdProvider, NameIdentifierUserIdProvider>();
 
 // ----------------------------
 // Controllers & Swagger
@@ -61,5 +71,6 @@ app.UseHttpsRedirection();
 app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapHub<NotificationsHub>("/hubs/notifications");
 app.MapControllers();
 app.Run();

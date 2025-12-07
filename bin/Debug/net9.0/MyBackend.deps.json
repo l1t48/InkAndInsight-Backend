@@ -11,6 +11,7 @@
           "DotNetEnv": "3.1.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.0",
           "Microsoft.AspNetCore.OpenApi": "9.0.11",
+          "Microsoft.AspNetCore.SignalR": "1.2.0",
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.0",
@@ -59,6 +60,27 @@
             "assemblyVersion": "9.0.11.0",
             "fileVersion": "9.0.1125.52006"
           }
+        }
+      },
+      "Microsoft.AspNetCore.SignalR/1.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.SignalR.Core": "1.2.0",
+          "Microsoft.AspNetCore.WebSockets": "2.3.0"
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Core/1.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.SignalR.Protocols.Json": "1.2.0"
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Protocols.Json/1.2.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        }
+      },
+      "Microsoft.AspNetCore.WebSockets/2.3.0": {
+        "dependencies": {
+          "System.Net.WebSockets.WebSocketProtocol": "5.1.0"
         }
       },
       "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
@@ -489,6 +511,14 @@
           }
         }
       },
+      "Newtonsoft.Json/11.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.2.21924"
+          }
+        }
+      },
       "Npgsql/9.0.0": {
         "runtime": {
           "lib/net8.0/Npgsql.dll": {
@@ -634,6 +664,14 @@
             "fileVersion": "8.0.1.50722"
           }
         }
+      },
+      "System.Net.WebSockets.WebSocketProtocol/5.1.0": {
+        "runtime": {
+          "lib/net6.0/System.Net.WebSockets.WebSocketProtocol.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.100.24.56208"
+          }
+        }
       }
     }
   },
@@ -670,6 +708,34 @@
       "sha512": "sha512-rTa3lp6B8KM8AESIwLakTT6XaoUBTnjAZq2pRX6zS/BzQy6mOVUgaawRSyM0WHykHdwbfrEAmer3ys2xE4DVtg==",
       "path": "microsoft.aspnetcore.openapi/9.0.11",
       "hashPath": "microsoft.aspnetcore.openapi.9.0.11.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XoCcsOTdtBiXyOzUtpbCl0IaqMOYjnr+6dbDxvUCFn7NR6bu7CwrlQ3oQzkltTwDZH0b6VEUN9wZPOYvPHi+Lg==",
+      "path": "microsoft.aspnetcore.signalr/1.2.0",
+      "hashPath": "microsoft.aspnetcore.signalr.1.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.Core/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eZTuMkSDw1uwjhLhJbMxgW2Cuyxfn0Kfqm8OBmqvuzE9Qc/VVzh8dGrAp2F9Pk7XKTDHmlhc5RTLcPPAZ5PSZw==",
+      "path": "microsoft.aspnetcore.signalr.core/1.2.0",
+      "hashPath": "microsoft.aspnetcore.signalr.core.1.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.SignalR.Protocols.Json/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hNvZ7kQxp5Udqd/IFWViU35bUJvi4xnNzjkF28HRvrdrS7JNsIASTvMqArP6HLQUc3j6nlUOeShNhVmgI1wzHg==",
+      "path": "microsoft.aspnetcore.signalr.protocols.json/1.2.0",
+      "hashPath": "microsoft.aspnetcore.signalr.protocols.json.1.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.WebSockets/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+T4zpnVPkIjvvkyhTH3WBJlTfqmTBRozvnMudAUDvcb4e+NrWf52q8BXh52rkCrBgX6Cudf6F/UhZwTowyBtKg==",
+      "path": "microsoft.aspnetcore.websockets/2.3.0",
+      "hashPath": "microsoft.aspnetcore.websockets.2.3.0.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
       "type": "package",
@@ -818,6 +884,13 @@
       "path": "mono.texttemplating/3.0.0",
       "hashPath": "mono.texttemplating.3.0.0.nupkg.sha512"
     },
+    "Newtonsoft.Json/11.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+      "path": "newtonsoft.json/11.0.2",
+      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+    },
     "Npgsql/9.0.0": {
       "type": "package",
       "serviceable": true,
@@ -922,6 +995,13 @@
       "sha512": "sha512-GJw3bYkWpOgvN3tJo5X4lYUeIFA2HD293FPUhKmp7qxS+g5ywAb34Dnd3cDAFLkcMohy5XTpoaZ4uAHuw0uSPQ==",
       "path": "system.identitymodel.tokens.jwt/8.0.1",
       "hashPath": "system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512"
+    },
+    "System.Net.WebSockets.WebSocketProtocol/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cVTT/Zw4JuUeX8H0tdWii0OMHsA5MY2PaFYOq/Hstw0jk479jZ+f8baCicWFNzJlCPWAe0uoNCELoB5eNmaMqA==",
+      "path": "system.net.websockets.websocketprotocol/5.1.0",
+      "hashPath": "system.net.websockets.websocketprotocol.5.1.0.nupkg.sha512"
     }
   }
 }
