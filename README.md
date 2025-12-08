@@ -21,11 +21,11 @@ This is the backend API for a book and quotes management application built with 
 - PostgreSQL – Database for storing users, books, and quotes.
 
 ### Steps to Run
-1- Ensure the required environment variables are set.
-2- Restore dependencies: ``` dotnet restore ```.
-3- Build the project: ``` dotnet build ```.
-4- Run the project locally: ``` dotnet run ```.
-5- The API will be available at http://localhost:5069.
+- Ensure the required environment variables are set.
+- Restore dependencies: ``` dotnet restore ```.
+- Build the project: ``` dotnet build ```.
+- Run the project locally: ``` dotnet run ```.
+- The API will be available at http://localhost:5069.
 
 ## Project Structure
 .
