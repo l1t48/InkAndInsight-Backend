@@ -54,15 +54,6 @@ namespace MyBackend.Controllers
             return Ok(new { message = "User registered!" });
         }
 
-        // // POST: api/register
-        // [HttpPost("register")]
-        // public async Task<IActionResult> Register(UserRegisterDto dto)
-        // {
-        //     var result = await _userService.RegisterAsync(dto.Username, dto.Email, dto.Password);
-        //     if (!result) return BadRequest(new { message = "Email already in use." });
-        //     return Ok(new { message = "User registered!" });
-        // }
-
         // POST: api/login
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDto dto)
@@ -80,7 +71,6 @@ namespace MyBackend.Controllers
             });
 
             return Ok(new { message = "Logged in successfully" });
-            // return Ok(new { message = "Logged in successfully" });
         }
 
         // GET: api/user-data

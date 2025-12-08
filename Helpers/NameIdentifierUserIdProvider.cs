@@ -1,4 +1,3 @@
-// Utilities/NameIdentifierUserIdProvider.cs
 using System.Security.Claims;
 using Microsoft.AspNetCore.SignalR;
 

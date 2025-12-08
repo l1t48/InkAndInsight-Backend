@@ -1,4 +1,3 @@
-// Models/User.cs
 namespace MyBackend.Models
 {
   public class User {

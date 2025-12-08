@@ -1,4 +1,3 @@
-// Models/Book.cs
 namespace MyBackend.Models
 {
   public class Book {

@@ -7,9 +7,7 @@ namespace MyBackend.Config
     {
         public static void AddDatabase(this IServiceCollection services)
         {
-            var conn = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
-                       ?? throw new Exception("Connection string not set.");
-
+            var conn = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? throw new Exception("Connection string not set.");
             services.AddDbContext<AppDbContext>(opt =>
                 opt.UseNpgsql(conn));
         }

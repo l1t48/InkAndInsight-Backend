@@ -1,5 +1,31 @@
+# Book & Quotes Management Backend
+
 ## Introduction
 This is the backend API for a book and quotes management application built with .NET 9 and PostgreSQL. It provides secured CRUD operations for books and quotes, with JWT-based authentication and per-user data isolation.
+
+## Tools & Libraries Used
+- .NET 9 – Backend framework for building the REST API.
+- Entity Framework Core – ORM for database interaction.
+- Npgsql.EntityFrameworkCore.PostgreSQL – PostgreSQL provider for EF Core.
+- Microsoft.AspNetCore.Authentication.JwtBearer – Handles JWT-based authentication.
+- Microsoft.AspNetCore.Identity – Provides user authentication and identity management.
+- Microsoft.AspNetCore.SignalR – Enables real-time updates between server and clients.
+- Swashbuckle.AspNetCore – Generates Swagger/OpenAPI documentation for the API.
+- DotNetEnv – Loads environment variables from a .env file. Microsoft.Extensions.Configuration.Json – Handles JSON configuration files (appsettings.json, etc.).
+- Microsoft.AspNetCore.OpenApi – Enhances OpenAPI support in ASP.NET Core.
+
+## Installation & Running
+
+### Prerequisites
+- .NET 9 SDK – Required to build and run the backend project.
+- PostgreSQL – Database for storing users, books, and quotes.
+
+### Steps to Run
+1- Ensure the required environment variables are set.
+2- Restore dependencies: ``` dotnet restore ```.
+3- Build the project: ``` dotnet build ```.
+4- Run the project locally: ``` dotnet run ```.
+5- The API will be available at http://localhost:5069.
 
 ## Project Structure
 .
@@ -37,7 +63,6 @@ This is the backend API for a book and quotes management application built with 
 └── appsettings.Development.json # Development-specific configuration
 
 ## Environment Variables
-
 The backend requires several environment variables for configuration. Replace the placeholder values with your own secure values before running the application.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -68,7 +93,6 @@ The backend requires several environment variables for configuration. Replace th
 
 
 ## Backend Test Verification Checklist
-
 The following table summarizes all backend functionality tests conducted using Postman to ensure proper authentication, authorization, and CRUD operations:
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -90,7 +114,6 @@ The following table summarizes all backend functionality tests conducted using P
 
 
 ## Professional Enhancements (Optional)
-
 The backend is functional and meets the test requirements. To make it more robust and production-ready, the following improvements could be considered:
 
 - **Rate limiting**: Prevent brute-force attacks by limiting the number of login attempts per user or IP address.  

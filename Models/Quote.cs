@@ -1,4 +1,3 @@
-// Models/Quote.cs
 namespace MyBackend.Models
 {
   public class Quote {
