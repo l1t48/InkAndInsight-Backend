@@ -66,7 +66,7 @@ namespace MyBackend.Controllers
             {
                 HttpOnly = true,
                 Secure = true, // true in production (requires HTTPS), It is now false for localhost testing
-                SameSite = SameSiteMode.Strict,
+                SameSite = SameSiteMode.None, //SameSiteMode.Strict,
                 Expires = DateTime.UtcNow.AddHours(3)
             });
 
