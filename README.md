@@ -28,39 +28,41 @@ This is the backend API for a book and quotes management application built with 
 - The API will be available at http://localhost:5069.
 
 ## Project Structure
-.
-├── Config
-│   ├── CorsConfig.cs          # Configures CORS policies
-│   ├── DatabaseConfig.cs      # Sets up database connection
-│   ├── JwtConfig.cs           # Configures JWT authentication
-│   └── SwaggerConfig.cs       # Configures Swagger/OpenAPI documentation
-├── Controllers
-│   ├── AuthController.cs      # Handles user registration and login
-│   ├── BooksController.cs     # CRUD operations for books (secured)
-│   └── QuotesController.cs    # CRUD operations for quotes (secured)
-├── DTOs                       # Data Transfer Objects for API requests/responses
-│   ├── BookCreateDto.cs
-│   ├── BookUpdateDto.cs
-│   ├── QuoteCreateDto.cs
-│   ├── QuoteUpdateDto.cs
-│   ├── UserLoginDto.cs
-│   └── UserRegisterDto.cs     
-├── Data
-│   ├── AppDbContext.cs        # EF Core database context
-│   └── AppDbContextFactory.cs # Factory for creating DbContext instances
-├── Helpers
-│   └── PasswordHelper.cs      # Utility for password hashing and verification
-├── Models                     # Entity models for the database
-│   ├── Book.cs
-│   ├── Quote.cs
-│   └── User.cs                
-├── Services
-│   └── UserService.cs         # Handles user-related logic (registration, login)
-├── MyBackend.csproj           # Project file for .NET build
-├── Program.cs                 # Application entry point
-├── README.md                  # Project documentation
-├── appsettings.json           # General configuration file
-└── appsettings.Development.json # Development-specific configuration
+| Folder / File                | Description / Purpose                            |
+| ---------------------------- | ------------------------------------------------ |
+| **Config**                   | Configuration files                              |
+| CorsConfig.cs                | Configures CORS policies                         |
+| DatabaseConfig.cs            | Sets up database connection                      |
+| JwtConfig.cs                 | Configures JWT authentication                    |
+| SwaggerConfig.cs             | Configures Swagger/OpenAPI documentation         |
+| **Controllers**              | API controllers                                  |
+| AuthController.cs            | Handles user registration and login              |
+| BooksController.cs           | CRUD operations for books (secured)              |
+| QuotesController.cs          | CRUD operations for quotes (secured)             |
+| **DTOs**                     | Data Transfer Objects for API requests/responses |
+| BookCreateDto.cs             |                                                  |
+| BookUpdateDto.cs             |                                                  |
+| QuoteCreateDto.cs            |                                                  |
+| QuoteUpdateDto.cs            |                                                  |
+| UserLoginDto.cs              |                                                  |
+| UserRegisterDto.cs           |                                                  |
+| **Data**                     | Database context and factories                   |
+| AppDbContext.cs              | EF Core database context                         |
+| AppDbContextFactory.cs       | Factory for creating DbContext instances         |
+| **Helpers**                  | Utility/helper files                             |
+| PasswordHelper.cs            | Utility for password hashing and verification    |
+| **Models**                   | Entity models for the database                   |
+| Book.cs                      |                                                  |
+| Quote.cs                     |                                                  |
+| User.cs                      |                                                  |
+| **Services**                 | Business logic / service layer                   |
+| UserService.cs               | Handles user-related logic (registration, login) |
+| MyBackend.csproj             | Project file for .NET build                      |
+| Program.cs                   | Application entry point                          |
+| README.md                    | Project documentation                            |
+| appsettings.json             | General configuration file                       |
+| appsettings.Development.json | Development-specific configuration               |
+
 
 ## Environment Variables
 The backend requires several environment variables for configuration. Replace the placeholder values with your own secure values before running the application.
