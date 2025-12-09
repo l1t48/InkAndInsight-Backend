@@ -85,14 +85,23 @@ namespace MyBackend.Controllers
             }
             return Ok(new { id = userId, email });
         }
-
         // POST: api/logout
         [HttpPost("logout")]
         public IActionResult Logout()
         {
-            Response.Cookies.Delete("jwt");
+            // Expire the JWT cookie to ensure it is removed from the browser
+            Response.Cookies.Append("jwt", "", new CookieOptions
+            {
+                Expires = DateTimeOffset.UtcNow.AddDays(-1), // Set past date to remove
+                HttpOnly = true,
+                Secure = true, // Ensure this matches the original cookie
+                SameSite = SameSiteMode.Strict,
+                Path = "/" // Must match the original cookie path
+            });
+
             return Ok(new { message = "Logged out successfully" });
         }
+
 
     }
 }
