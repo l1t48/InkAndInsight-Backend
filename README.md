@@ -127,6 +127,3 @@ The backend is functional and meets the test requirements. To make it more robus
 - **SQL injection protection**: While Entity Framework automatically parameterizes queries, always ensure that any raw SQL or user input is properly sanitized to prevent SQL injection.  
 - **Logging and monitoring**: Track application activity, errors, and security events to support maintenance and auditing.  
 
-
-
-
